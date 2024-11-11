@@ -1,5 +1,3 @@
-import time
-
 from emilia.handlers.common import ping
 from emilia.config import BOT_PREFIXES
 
