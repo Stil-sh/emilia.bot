@@ -1,6 +1,5 @@
 from emilia.bot import start_bot
 from emilia.config import BOT_TOKEN, BOT_ID
-from loguru import logger
 
 
 if __name__ == "__main__":

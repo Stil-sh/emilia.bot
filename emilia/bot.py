@@ -2,7 +2,7 @@ import time
 from threading import Thread
 
 from vk_api.vk_api import VkApiGroup
-from vk_api.bot_longpoll import VkBotLongPoll, VkBotEventType
+from vk_api.bot_longpoll import VkBotLongPoll
 from requests.exceptions import ReadTimeout
 from loguru import logger
 
