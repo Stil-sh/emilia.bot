@@ -19,7 +19,7 @@ def handle_event(vk, event):
             event = event.message
             text = event.text.lower()
 
-            if text != "" and text[0] in BOT_PREFIXES and text[1:] in handlers:
-                handlers[text[1:]](vk, event)
+            if text != "" and text[0] in BOT_PREFIXES and text[1:].strip() in handlers:
+                handlers[text[1:].strip()](vk, event)
     except Exception as e:
         logger.error(f"Получена ошибка при обработке события: {e}")
