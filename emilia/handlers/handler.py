@@ -1,13 +1,10 @@
-from emilia.handlers.common import ping
-from emilia.config import BOT_PREFIXES
-
 from loguru import logger
 from vk_api.bot_longpoll import VkBotEventType
 
+from emilia.config import BOT_PREFIXES
+from emilia.handlers.common import ping
 
-handlers = {
-    "пинг": ping.get_ping
-}
+handlers = {"пинг": ping.get_ping}
 
 
 def handle_event(vk, event):
