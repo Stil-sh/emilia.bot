@@ -1,10 +1,10 @@
 import time
 from threading import Thread
 
-from vk_api.vk_api import VkApiGroup
-from vk_api.bot_longpoll import VkBotLongPoll
-from requests.exceptions import ReadTimeout
 from loguru import logger
+from requests.exceptions import ReadTimeout
+from vk_api.bot_longpoll import VkBotLongPoll
+from vk_api.vk_api import VkApiGroup
 
 from emilia.handlers import handle_event
 
@@ -23,7 +23,17 @@ def start_bot(bot_token, bot_id):
     while True:
         try:
             for event in longpoll.listen():
-                Thread(target=handle_event, args=(vk, event,), daemon=True).start()
+                Thread(
+                    target=handle_event,
+                    args=(
+                        vk,
+                        event,
+                    ),
+                    daemon=True,
+                ).start()
+        except KeyboardInterrupt:
+            logger.info("Завершение работы по команде")
+            break
         except ReadTimeout:
             logger.error(f"Получена ошибка соединения. Засыпаю на 5 секунд.")
             time.sleep(5)

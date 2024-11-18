@@ -11,7 +11,4 @@ BOT_PREFIXES = ["!", "/", "."]
 DB_PATH = "emilia/files/database.db"
 
 # Эмодзи
-EMOJI = {
-    "good": "✅",
-    "bad": "❌"
-}
+EMOJI = {"good": "✅", "bad": "❌"}
