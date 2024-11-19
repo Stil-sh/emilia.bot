@@ -13,6 +13,7 @@ class Chat(Model):
     owner_id = BigIntegerField(default=None)
     rules = TextField(default=None)
     greeting = TextField(default=None)
+    prefix_disable = BooleanField(default=False)
 
     class Meta:
         database = database

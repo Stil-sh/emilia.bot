@@ -18,7 +18,8 @@ def start_bot(bot_token, bot_id):
     except Exception as e:
         logger.error(f"Получена ошибка при авторизации: {e}")
 
-    logger.info("Бот запущен")
+    group_info = vk.groups.getById(group_id=bot_id)[0]
+    logger.info(f"Бот запущен ({group_info['name']}, {bot_id})")
 
     while True:
         try:
