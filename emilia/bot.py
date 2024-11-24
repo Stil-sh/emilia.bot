@@ -32,9 +32,6 @@ def start_bot(bot_token, bot_id):
                     ),
                     daemon=True,
                 ).start()
-        except KeyboardInterrupt:
-            logger.info("Завершение работы по команде")
-            break
         except ReadTimeout:
             logger.error(f"Получена ошибка соединения. Засыпаю на 5 секунд.")
             time.sleep(5)
