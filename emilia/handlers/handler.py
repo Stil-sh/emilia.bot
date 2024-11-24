@@ -24,4 +24,18 @@ def remove_handler(command):
 
 def processing_handlers(vk, event):
     """Обработать событие если есть обработчик"""
-    ...
+    logger.debug(f"Событие: {event.raw}")
+
+    if event.type == VkBotEventType.MESSAGE_NEW:
+        message = event.message
+        peer_id = message.peer_id
+        text = message.text
+        command = text.split()[0].lower()
+
+        if any(text.startswith(prefix) for prefix in BOT_PREFIXES):
+            command = command[1:]
+
+        if command in common_handlers:
+            common_handlers[command](vk, event)
+        elif command in chat_handlers and peer_id > 2000000000:
+            chat_handlers[command](vk, event)
