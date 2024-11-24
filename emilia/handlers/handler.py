@@ -3,6 +3,7 @@ from vk_api.bot_longpoll import VkBotEventType
 
 from emilia.config import BOT_PREFIXES
 from emilia.handlers.common import ping
+from emilia.utils import db_utils
 
 handlers = {"пинг": ping.get_ping}
 
@@ -13,6 +14,10 @@ def handle_event(vk, event):
         logger.debug(f"Новое событие: {event.raw}")
 
         if event.type == VkBotEventType.MESSAGE_NEW:
+            if event.from_chat:
+                chat_id = event.chat_id
+                db_utils.reg_chat(chat_id)
+
             event = event.message
             text = event.text.lower()
 
