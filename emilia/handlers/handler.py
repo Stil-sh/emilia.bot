@@ -5,27 +5,23 @@ from emilia.config import BOT_PREFIXES
 from emilia.handlers.common import ping
 from emilia.utils import db_utils
 
-handlers = {"пинг": ping.get_ping}
+# Обработчики которые работают и в лс и в чате
+common_handlers = {}
+
+# Обработчики которые работают только в чате
+chat_handlers = {}
 
 
-def handle_event(vk, event):
-    """Обработать событие"""
-    try:
-        logger.debug(f"Новое событие: {event.raw}")
+def add_handler(command, handler, out):
+    """Добавить обработчик"""
+    ...
 
-        if event.type == VkBotEventType.MESSAGE_NEW:
-            if event.from_chat:
-                chat_id = event.chat_id
-                db_utils.reg_chat(chat_id)
 
-            event = event.message
-            text = event.text.lower()
+def remove_handler(command):
+    """Удалить обработчик"""
+    ...
 
-            if text != "":
-                prefix = text[0]
-                command = text[1:].strip()
 
-                if prefix in BOT_PREFIXES and command in handlers:
-                    handlers[command](vk, event)
-    except Exception as e:
-        logger.error(f"Получена ошибка при обработке события: {e}")
+def processing_handlers(vk, event):
+    """Обработать событие если есть обработчик"""
+    ...

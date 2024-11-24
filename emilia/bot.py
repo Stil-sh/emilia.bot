@@ -6,7 +6,7 @@ from requests.exceptions import ReadTimeout
 from vk_api.bot_longpoll import VkBotLongPoll
 from vk_api.vk_api import VkApiGroup
 
-from emilia.handlers import handle_event
+from emilia.handlers import processing_handlers
 
 
 def start_bot(bot_token, bot_id):
@@ -25,7 +25,7 @@ def start_bot(bot_token, bot_id):
         try:
             for event in longpoll.listen():
                 Thread(
-                    target=handle_event,
+                    target=processing_handlers,
                     args=(
                         vk,
                         event,
