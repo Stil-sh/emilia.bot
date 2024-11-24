@@ -36,6 +36,5 @@ class ChatMember(Model):
 def create_tables():
     """Создать таблицы в базе данных"""
 
-    Chat.create_table()
-    ChatMember.create_table()
+    database.create_tables([Chat, ChatMember])
     logger.info("База данных создана")
