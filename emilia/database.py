@@ -17,6 +17,7 @@ class Chat(Model):
 
     class Meta:
         database = database
+        db_table = "chats"
 
 
 class ChatMember(Model):
@@ -29,6 +30,7 @@ class ChatMember(Model):
 
     class Meta:
         database = database
+        db_table = "chat_members"
 
 
 def create_tables():
