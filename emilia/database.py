@@ -10,9 +10,9 @@ class Chat(Model):
     """Модель чата в базе данных"""
 
     chat_id = BigIntegerField()
-    owner_id = BigIntegerField(default=None)
-    rules = TextField(default=None)
-    greeting = TextField(default=None)
+    owner_id = BigIntegerField(default=None, null=True)
+    rules = TextField(default=None, null=True)
+    greeting = TextField(default=None, null=True)
     prefix_disable = BooleanField(default=False)
 
     class Meta:
@@ -25,7 +25,7 @@ class ChatMember(Model):
     member_id = BigIntegerField()
     chat_id = BigIntegerField()
     rank = SmallIntegerField(default=1)
-    nickname = TextField(default=None)
+    nickname = TextField(default=None, null=True)
 
     class Meta:
         database = database
